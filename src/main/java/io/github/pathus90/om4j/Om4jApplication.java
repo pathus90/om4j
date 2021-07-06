@@ -13,19 +13,19 @@ public class Om4jApplication {
 
 	public static void main(String[] args) throws IOException {
 		OrangeMoney orangeMoney = new OrangeMoney("dev");
-		TokenResponse tokenResponse = orangeMoney.getAccessToken("SlZ0YlByVGN2Q0RpR2Q5cGhidlB0ZEVwM0FUbGVHWVE6NnFLSGYzd1U4akhqaFJ0bg==");
+		TokenResponse tokenResponse = orangeMoney.getAccessToken("");
 
 		System.out.println(tokenResponse.toString());
 
 		WebPaymentRequest webPaymentRequest = WebPaymentRequest.builder()
 				.currency("OUV")
 				.lang("fr")
-				.cancelUrl("https://myvirtualshop.webnode.es/txncncld/")
-				.notifUrl("https://www.merchant-example2.org/notif")
-				.returnUrl("https://myvirtualshop.webnode.es")
-				.reference("WELY")
-				.merchantKey("b7872ce7")
-				.orderId("134TsYpoeep")
+				.cancelUrl("")
+				.notifUrl("")
+				.returnUrl("")
+				.reference("")
+				.merchantKey("")
+				.orderId("")
 				.amount(1)
 				.build();
 
