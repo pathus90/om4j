@@ -124,6 +124,7 @@ If the transaction is not tried (the customer doesn’t do anything or returns o
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+Any issues, please [report here](https://github.com/pathus90/om4j/issues)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
