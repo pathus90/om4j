@@ -36,10 +36,11 @@ TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
 ```
 NOTE:  CONSUMER_KEY is in Authorization header
 
-For production your need to set your target country code in COUNTRY enviroment variable 
+For production your need to set your target country code in as enviroment 
+Exemple : gn for Guinea
+
 ``` java
-OrangeMoney orangeMoney = new OrangeMoney("prod");
-orangeMoney.setCountry("gn");
+OrangeMoney orangeMoney = new OrangeMoney("gn");
 TokenResponse tokenResponse = orangeMoney.getAccessToken("");
 
 ```
