@@ -1,6 +1,5 @@
 package io.github.pathus90.om4j.utils;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import io.github.pathus90.om4j.exception.ApiError;
 import io.github.pathus90.om4j.exception.MobileMoneyException;
 import io.github.pathus90.om4j.exception.TokenError;
@@ -9,7 +8,6 @@ import io.github.pathus90.om4j.model.HttpResponse;
 import lombok.NoArgsConstructor;
 import okhttp3.*;
 
-import java.io.IOException;
 import java.util.Locale;
 import java.util.Objects;
 
@@ -23,7 +21,6 @@ import static io.github.pathus90.om4j.config.MobileMoneyConfig.SUCCESS_RESPONSE_
 import static io.github.pathus90.om4j.config.MobileMoneyConfig.HTTP_METHOD_POST;
 import static io.github.pathus90.om4j.config.MobileMoneyConfig.CONTENT_TYPE;
 
-
 @NoArgsConstructor
 public class WebHttpClient {
 
@@ -36,9 +33,9 @@ public class WebHttpClient {
      * @param clazz class of the request's value .
      * @param <T> specified type of object
      * @return object
-     * @throws JsonProcessingException JsonProcessingException if error in parser
+     * @throws Exception Exception if error in parser
      */
-    public <T> T execute(String token, String endpoint, Class<T> clazz) throws JsonProcessingException {
+    public <T> T execute(String token, String endpoint, Class<T> clazz) throws Exception {
         Headers headers = new Headers.Builder().add(AUTHORIZATION, BASIC.concat(token)).build();
         FormBody body = new FormBody.Builder().add(GRANT_TYPE, CLIENT_CREDENTIALS).build();
         HttpRequest httpRequest = new HttpRequest(endpoint, headers, body);
@@ -59,9 +56,9 @@ public class WebHttpClient {
      * @param clazz class of the request's value .
      * @param <T> specified type of object
      * @return object
-     * @throws JsonProcessingException JsonProcessingException IOException if error in parser
+     * @throws Exception Exception if error in parser
      */
-    public <T> T execute(String token, String endpoint, io.github.pathus90.om4j.model.request.Request request, Class<T> clazz) throws JsonProcessingException {
+    public <T> T execute(String token, String endpoint, io.github.pathus90.om4j.model.request.Request request, Class<T> clazz) throws Exception {
         Headers headers = new Headers.Builder().add(AUTHORIZATION.toLowerCase(Locale.ROOT), BEARER.concat(token)).build();
         RequestBody body = RequestBody.create(MediaType.get(CONTENT_TYPE), JsonUtils.getJsonStringFromObject(request));
         HttpRequest httpRequest = new HttpRequest(endpoint, headers, body);

@@ -23,17 +23,17 @@ public class OrangeMoney extends MobileMoneyConfig implements MobileMoneyTransac
     }
 
     @Override
-    public TokenResponse getAccessToken(String token) throws JsonProcessingException {
+    public TokenResponse getAccessToken(String token) throws Exception {
         return webHttpClient.execute(token, getTokenUrl(), TokenResponse.class);
     }
 
     @Override
-    public WebPaymentResponse initPayment(WebPaymentRequest webPaymentRequest, String token) throws JsonProcessingException {
+    public WebPaymentResponse initPayment(WebPaymentRequest webPaymentRequest, String token) throws Exception {
         return webHttpClient.execute(token, getWebPaymentUrl(), webPaymentRequest, WebPaymentResponse.class);
     }
 
     @Override
-    public StatusResponse getTransactionStatus(StatusRequest statusRequest, String token) throws JsonProcessingException {
+    public StatusResponse getTransactionStatus(StatusRequest statusRequest, String token) throws Exception {
         return webHttpClient.execute(token, getTransactionStatusUrl(), statusRequest, StatusResponse.class);
     }
 }
