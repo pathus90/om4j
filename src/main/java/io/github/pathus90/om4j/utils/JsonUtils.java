@@ -3,8 +3,6 @@ package io.github.pathus90.om4j.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.IOException;
-
 public final class JsonUtils {
 
     private static final ObjectMapper objectMapper = new ObjectMapper();

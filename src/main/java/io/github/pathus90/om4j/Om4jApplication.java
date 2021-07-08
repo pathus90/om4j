@@ -7,11 +7,9 @@ import io.github.pathus90.om4j.model.response.TokenResponse;
 import io.github.pathus90.om4j.model.response.WebPaymentResponse;
 import io.github.pathus90.om4j.service.impl.OrangeMoney;
 
-import java.io.IOException;
-
 public class Om4jApplication {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		OrangeMoney orangeMoney = new OrangeMoney("dev");
 		TokenResponse tokenResponse = orangeMoney.getAccessToken("");
 
