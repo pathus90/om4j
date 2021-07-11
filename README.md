@@ -30,18 +30,20 @@ implementation 'io.github.pathus90:om4j:1.0.0'
 ### Get your Access token
 Orange Money Web Payment API requires an Access token, based on your developer credentials (client id and client secret).
 
+
 ``` java
 OrangeMoney orangeMoney = new OrangeMoney("dev");
 TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
 ```
-NOTE:  CONSUMER_KEY is in Authorization header
 
 For production your need to set your target country code in as enviroment 
 Exemple : gn for Guinea
 
 ``` java
 OrangeMoney orangeMoney = new OrangeMoney("gn");
-TokenResponse tokenResponse = orangeMoney.getAccessToken("");
+TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
+
+NOTE:  CONSUMER_KEY is in Authorization header
 
 ```
 ###  Response Structure
