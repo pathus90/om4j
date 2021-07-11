@@ -17,7 +17,7 @@ If you use Maven, add the following configuration to your project's `pom.xml`
 <dependency>
   <groupId>io.github.pathus90</groupId>
   <artifactId>om4j</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 or, if you use `Gradle`, add the following line to your build file:
