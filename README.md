@@ -42,10 +42,9 @@ Exemple : gn for Guinea
 ``` java
 OrangeMoney orangeMoney = new OrangeMoney("gn");
 TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
-
+```
 NOTE:  CONSUMER_KEY is in Authorization header
 
-```
 ###  Response Structure
 ``` json
 {
