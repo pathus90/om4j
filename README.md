@@ -1,5 +1,5 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.pathus90/om4j.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.pathus90%22%20AND%20a:%22om4j%22)
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f7e96628fcfb42b8bc9b42230b30fead)](https://www.codacy.com/gh/pathus90/om4j/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pathus90/om4j&amp;utm_campaign=Badge_Grade)
 # om4j
 
 Orange money api for java
@@ -7,10 +7,10 @@ Orange money api for java
 ## Getting Started
 
 ### System Requirements
- - JDK 11 or higher.
- - Apache Maven 3.3.9 or higher
- - subscription via Orange Partner portal
- 
+- JDK 11 or higher.
+- Apache Maven 3.3.9 or higher
+- subscription via Orange Partner portal
+
 ### Add Maven Dependency
 If you use Maven, add the following configuration to your project's `pom.xml`
 ```maven
@@ -32,16 +32,16 @@ Orange Money Web Payment API requires an Access token, based on your developer c
 
 
 ``` java
-OrangeMoney orangeMoney = new OrangeMoney("dev");
-TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
+MobileMoneyTransaction orangeMoneyService = new OrangeMoneyService("dev");
+TokenResponse accessTokenResponse = orangeMoneyService.getAccessToken("CONSUMER_KEY");
 ```
 
-For production your need to set your target country code in as enviroment 
+For production your need to set your target country code in as enviroment
 Exemple : gn for Guinea
 
 ``` java
-OrangeMoney orangeMoney = new OrangeMoney("gn");
-TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
+MobileMoneyTransaction orangeMoneyService = new OrangeMoneyService("gn");
+TokenResponse accessTokenResponse = orangeMoneyService.getAccessToken(CONSUMER_KEY);
 ```
 NOTE:  CONSUMER_KEY is in Authorization header
 
@@ -72,7 +72,7 @@ WebPaymentRequest webPaymentRequest = WebPaymentRequest.builder()
 				.amount()
 				.build();
 
-WebPaymentResponse webPaymentResponse = orangeMoney.initPayment(webPaymentRequest, "ACCESS_TOKEN");
+WebPaymentResponse webPaymentResponse = orangeMoneyService.initPayment(webPaymentRequest, "ACCESS_TOKEN");
 ```
 
 ###  Response Structure
@@ -99,7 +99,7 @@ StatusRequest statusRequest = StatusRequest.builder()
 				.amount(webPaymentRequest.getAmount())
 				.build();
 
-StatusResponse statusResponse = orangeMoney.getTransactionStatus(statusRequest, "ACCESS_TOKEN");
+StatusResponse statusResponse = orangeMoneyService.getTransactionStatus(statusRequest, "ACCESS_TOKEN");
 
 ```
 ###  Response Structure
