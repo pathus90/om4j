@@ -32,16 +32,16 @@ Orange Money Web Payment API requires an Access token, based on your developer c
 
 
 ``` java
-OrangeMoney orangeMoney = new OrangeMoney("dev");
-TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
+MobileMoneyTransaction orangeMoneyService = new OrangeMoneyService("dev");
+TokenResponse tokenResponse = orangeMoneyService.getAccessToken("CONSUMER_KEY");
 ```
 
 For production your need to set your target country code in as enviroment 
 Exemple : gn for Guinea
 
 ``` java
-OrangeMoney orangeMoney = new OrangeMoney("gn");
-TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
+MobileMoneyTransaction orangeMoneyService = new OrangeMoneyService("gn");
+TokenResponse tokenResponse = orangeMoneyService.getAccessToken(CONSUMER_KEY);
 ```
 NOTE:  CONSUMER_KEY is in Authorization header
 
@@ -72,7 +72,7 @@ WebPaymentRequest webPaymentRequest = WebPaymentRequest.builder()
 				.amount()
 				.build();
 
-WebPaymentResponse webPaymentResponse = orangeMoney.initPayment(webPaymentRequest, "ACCESS_TOKEN");
+WebPaymentResponse webPaymentResponse = orangeMoneyService.initPayment(webPaymentRequest, "ACCESS_TOKEN");
 ```
 
 ###  Response Structure
@@ -99,7 +99,7 @@ StatusRequest statusRequest = StatusRequest.builder()
 				.amount(webPaymentRequest.getAmount())
 				.build();
 
-StatusResponse statusResponse = orangeMoney.getTransactionStatus(statusRequest, "ACCESS_TOKEN");
+StatusResponse statusResponse = orangeMoneyService.getTransactionStatus(statusRequest, "ACCESS_TOKEN");
 
 ```
 ###  Response Structure

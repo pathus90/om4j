@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class TokenError {
-    private String error;
-    @JsonProperty("error_description")
-    private String errorDescription;
+	private String error;
+	@JsonProperty("error_description")
+	private String description;
 
 }

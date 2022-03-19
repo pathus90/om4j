@@ -8,19 +8,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class WebPaymentResponse {
 
-    @JsonProperty("status")
-    private String status;
+	@JsonProperty("status")
+	private String status;
 
-    @JsonProperty("message")
-    private String message;
+	@JsonProperty("message")
+	private String message;
 
-    @JsonProperty("pay_token")
-    private String payToken;
+	@JsonProperty("pay_token")
+	private String payToken;
 
-    @JsonProperty("payment_url")
-    private String paymentUrl;
+	@JsonProperty("payment_url")
+	private String paymentUrl;
 
-    @JsonProperty("notif_token")
-    private String notifToken;
+	@JsonProperty("notif_token")
+	private String notifToken;
 
 }

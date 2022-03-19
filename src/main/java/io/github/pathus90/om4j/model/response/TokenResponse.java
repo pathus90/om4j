@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TokenResponse {
 
-    @JsonProperty("token_type")
-    private String tokenType;
+	@JsonProperty("token_type")
+	private String tokenType;
 
-    @JsonProperty("access_token")
-    private String accessToken;
+	@JsonProperty("access_token")
+	private String accessToken;
 
-    @JsonProperty("expires_in")
-    private String expiresIn;
+	@JsonProperty("expires_in")
+	private String expiresIn;
 
 }
