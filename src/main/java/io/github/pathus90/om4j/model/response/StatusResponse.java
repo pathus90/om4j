@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class StatusResponse {
 
-    @JsonProperty("status")
-    private String status;
+	@JsonProperty("status")
+	private String status;
 
-    @JsonProperty("order_id")
-    private String orderId;
+	@JsonProperty("order_id")
+	private String orderId;
 
-    @JsonProperty("txnid")
-    private String txnId;
+	@JsonProperty("txnid")
+	private String txnId;
 
 }

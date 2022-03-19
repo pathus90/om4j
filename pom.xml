@@ -24,6 +24,7 @@
 		<org.sonatype.plugins.version>1.6.8</org.sonatype.plugins.version>
 		<gpg.keyname>0x321E4625</gpg.keyname>
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
+        <spotless.version>2.20.0</spotless.version>
 	</properties>
 
 	<licenses>
@@ -184,6 +185,27 @@
 					<target>${maven.compiler.target}</target>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless.version}</version>
+                <executions>
+                    <execution>
+                        <id>apply</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>apply</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                <java>
+                    <eclipse>
+                        <file>${project.basedir}/formatter.xml</file>
+                    </eclipse>
+                </java>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 </project>

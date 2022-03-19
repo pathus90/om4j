@@ -4,41 +4,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
-@Setter
-@JsonPropertyOrder({"currency", "merchant_key", "order_id", "amount", "return_url", "cancel_url", "notif_url", "lang", "reference"})
-public class WebPaymentRequest extends Request {
+@Builder
+@JsonPropertyOrder({ "currency", "merchant_key", "order_id", "amount", "return_url", "cancel_url", "notif_url", "lang",
+		"reference" })
+public class WebPaymentRequest {
 
-    @JsonProperty("currency")
-    private String currency;
+	@JsonProperty("order_id")
+	private String orderId;
 
-    @JsonProperty("merchant_key")
-    private String merchantKey;
+	@JsonProperty("amount")
+	private int amount;
 
-    @JsonProperty("return_url")
-    private String returnUrl;
+	@JsonProperty("currency")
+	private String currency;
 
-    @JsonProperty("cancel_url")
-    private String cancelUrl;
+	@JsonProperty("merchant_key")
+	private String merchantKey;
 
-    @JsonProperty("notif_url")
-    private String notifUrl;
+	@JsonProperty("return_url")
+	private String returnUrl;
 
-    @JsonProperty("lang")
-    private String lang;
+	@JsonProperty("cancel_url")
+	private String cancelUrl;
 
-    @JsonProperty("reference")
-    private String reference;
+	@JsonProperty("notif_url")
+	private String notifUrl;
 
-    @Builder
-    public WebPaymentRequest(String orderId, int amount, String currency, String merchantKey, String returnUrl, String cancelUrl, String notifUrl, String lang, String reference) {
-        super(orderId, amount);
-        this.currency = currency;
-        this.merchantKey = merchantKey;
-        this.returnUrl = returnUrl;
-        this.cancelUrl = cancelUrl;
-        this.notifUrl = notifUrl;
-        this.lang = lang;
-        this.reference = reference;
-    }
+	@JsonProperty("lang")
+	private String lang;
+
+	@JsonProperty("reference")
+	private String reference;
 }

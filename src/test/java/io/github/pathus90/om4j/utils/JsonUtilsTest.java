@@ -1,6 +1,6 @@
 package io.github.pathus90.om4j.utils;
 
-import io.github.pathus90.om4j.model.HttpResponse;
+import io.github.pathus90.om4j.model.response.HttpResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -8,28 +8,29 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public final class JsonUtilsTest {
+class JsonUtilsTest {
 
-    private String fakeJson;
+	private String fakeJson;
 
-    @BeforeEach
-    void setUp() {
-        fakeJson = "{\"status\":100,\"data\":\"test\"}";
-    }
-    @Test
-    public void getJsonStringFromObject() throws IOException {
+	@BeforeEach
+	void setUp() {
+		fakeJson = "{\"status\":100,\"data\":\"test\"}";
+	}
 
-        HttpResponse fakeHttpResponse = new HttpResponse();
-        fakeHttpResponse.setData("test");
-        fakeHttpResponse.setStatus(100);
+	@Test
+	void getJsonStringFromObject() throws IOException {
 
-        String result = JsonUtils.getJsonStringFromObject(fakeHttpResponse);
-        assertEquals(fakeJson, result);
-    }
+		HttpResponse fakeHttpResponse = new HttpResponse();
+		fakeHttpResponse.setData("test");
+		fakeHttpResponse.setStatus(100);
 
-    @Test
-    public void getObjectFromJsonString() throws IOException {
-        HttpResponse response = JsonUtils.getObjectFromJsonString(fakeJson, HttpResponse.class);
-        assertEquals(100, response.getStatus());
-    }
+		String result = JsonUtils.getJsonStringFromObject(fakeHttpResponse);
+		assertEquals(fakeJson, result);
+	}
+
+	@Test
+	void getObjectFromJsonString() throws IOException {
+		HttpResponse response = JsonUtils.getObjectFromJsonString(fakeJson, HttpResponse.class);
+		assertEquals(100, response.getStatus());
+	}
 }
