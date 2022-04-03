@@ -1,5 +1,5 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.pathus90/om4j.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.pathus90%22%20AND%20a:%22om4j%22)
-
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f7e96628fcfb42b8bc9b42230b30fead)](https://www.codacy.com/gh/pathus90/om4j/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pathus90/om4j&amp;utm_campaign=Badge_Grade)
 # om4j
 
 Orange money api for java
