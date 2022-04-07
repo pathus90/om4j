@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MobileMoneyException extends RuntimeException {
 
-	private String message;
-	private int code;
-	private String description;
+	private final String message;
+	private final int code;
+	private final String description;
 
 	public MobileMoneyException(String message) {
 		super(message);
