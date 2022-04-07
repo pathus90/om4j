@@ -14,7 +14,7 @@ public class Om4jApplication {
 		AccessTokenResponse accessTokenResponse = orangeMoneyService
 				.getAccessToken("SlZ0YlByVGN2Q0RpR2Q5cGhidlB0ZEVwM0FUbGVHWVE6WjR1Q1lZM2ZWcU90M3Z2RA==");
 
-		System.out.println(accessTokenResponse.toString());
+	
 		WebPaymentRequest webPaymentRequest = WebPaymentRequest.builder()
 				.currency("OUV")
 				.lang("fr")
@@ -30,8 +30,7 @@ public class Om4jApplication {
 		WebPaymentResponse webPaymentResponse = orangeMoneyService.initPayment(webPaymentRequest,
 				accessTokenResponse.getToken());
 
-		System.out.println(webPaymentResponse.toString());
-
+		
 		StatusRequest statusRequest = StatusRequest.builder()
 				.payToken(webPaymentResponse.getPayToken())
 				.orderId(webPaymentRequest.getOrderId())
@@ -41,7 +40,6 @@ public class Om4jApplication {
 		StatusResponse statusResponse = orangeMoneyService.getTransactionStatus(statusRequest,
 				accessTokenResponse.getToken());
 
-		System.out.println(statusResponse.toString());
 
 	}
 
