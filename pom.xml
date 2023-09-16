@@ -4,7 +4,7 @@
 
 	<groupId>io.github.pathus90</groupId>
 	<artifactId>om4j</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>om4j</name>
 	<description>Orange money Payment Java Library</description>
@@ -57,7 +57,7 @@
 	<scm>
 		<url>https://github.com/pathus90/om4j</url>
 		<connection>scm:git:https://github.com/pathus90/om4j.git</connection>
-	  <tag>om4j-1.0.3</tag>
+	  <tag>HEAD</tag>
   </scm>
 
 	<dependencies>
