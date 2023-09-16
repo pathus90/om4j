@@ -15,12 +15,12 @@
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven.compiler.version>3.6.1</maven.compiler.version>
-		<jackson.verion>2.11.4</jackson.verion>
-		<lombok.version>1.18.20</lombok.version>
-		<gson.version>2.8.7</gson.version>
+		<jackson.verion>2.14.2</jackson.verion>
+		<lombok.version>1.18.26</lombok.version>
+		<gson.version>2.10.1</gson.version>
 		<okhttp.version>3.14.9</okhttp.version>
 		<assembly-plugin.version>3.3.0</assembly-plugin.version>
-		<junit-jupiter.version>5.4.2</junit-jupiter.version>
+		<junit-jupiter.version>5.9.2</junit-jupiter.version>
 		<org.sonatype.plugins.version>1.6.8</org.sonatype.plugins.version>
 		<gpg.keyname>0x321E4625</gpg.keyname>
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
@@ -94,7 +94,13 @@
 			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.2.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 	<profiles>
 		<profile>

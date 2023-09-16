@@ -2,40 +2,45 @@ package io.github.pathus90.om4j.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
-@Builder
-@JsonPropertyOrder({ "currency", "merchant_key", "order_id", "amount", "return_url", "cancel_url", "notif_url", "lang",
-		"reference" })
-public class WebPaymentRequest {
+@Setter
+@JsonPropertyOrder({"currency", "merchant_key", "order_id", "amount", "return_url", "cancel_url", "notif_url", "lang", "reference"})
+public class WebPaymentRequest extends RequestBase {
 
-	@JsonProperty("order_id")
-	private String orderId;
+    @JsonProperty("currency")
+    private String currency;
 
-	@JsonProperty("amount")
-	private int amount;
+    @JsonProperty("merchant_key")
+    private String merchantKey;
 
-	@JsonProperty("currency")
-	private String currency;
+    @JsonProperty("return_url")
+    private String returnUrl;
 
-	@JsonProperty("merchant_key")
-	private String merchantKey;
+    @JsonProperty("cancel_url")
+    private String cancelUrl;
 
-	@JsonProperty("return_url")
-	private String returnUrl;
+    @JsonProperty("notif_url")
+    private String notifUrl;
 
-	@JsonProperty("cancel_url")
-	private String cancelUrl;
+    @JsonProperty("lang")
+    private String lang;
 
-	@JsonProperty("notif_url")
-	private String notifUrl;
+    @JsonProperty("reference")
+    private String reference;
 
-	@JsonProperty("lang")
-	private String lang;
-
-	@JsonProperty("reference")
-	private String reference;
+    @Builder
+    public WebPaymentRequest(String orderId, int amount, String currency, String merchantKey, String returnUrl, String cancelUrl, String notifUrl, String lang, String reference) {
+        super(orderId, amount);
+        this.currency = currency;
+        this.merchantKey = merchantKey;
+        this.returnUrl = returnUrl;
+        this.cancelUrl = cancelUrl;
+        this.notifUrl = notifUrl;
+        this.lang = lang;
+        this.reference = reference;
+    }
 }

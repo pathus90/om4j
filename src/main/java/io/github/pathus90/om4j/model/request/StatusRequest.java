@@ -1,20 +1,20 @@
 package io.github.pathus90.om4j.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class StatusRequest {
+@Getter
+@Setter
+public class StatusRequest extends RequestBase {
 
-	@JsonProperty("order_id")
-	private String orderId;
+    @JsonProperty("pay_token")
+    private String payToken;
 
-	@JsonProperty("amount")
-	private int amount;
-
-	@JsonProperty("pay_token")
-	private String payToken;
-
+    @Builder
+    public StatusRequest(String orderId, int amount, String payToken) {
+        super(orderId, amount);
+        this.payToken = payToken;
+    }
 }

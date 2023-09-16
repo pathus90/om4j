@@ -1,5 +1,5 @@
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.pathus90/om4j.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.pathus90%22%20AND%20a:%22om4j%22)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f7e96628fcfb42b8bc9b42230b30fead)](https://www.codacy.com/gh/pathus90/om4j/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pathus90/om4j&amp;utm_campaign=Badge_Grade)
+
 # om4j
 
 Orange money api for java
@@ -7,17 +7,17 @@ Orange money api for java
 ## Getting Started
 
 ### System Requirements
-- JDK 11 or higher.
-- Apache Maven 3.3.9 or higher
-- subscription via Orange Partner portal
-
+ - JDK 11 or higher.
+ - Apache Maven 3.3.9 or higher
+ - subscription via Orange Partner portal
+ 
 ### Add Maven Dependency
 If you use Maven, add the following configuration to your project's `pom.xml`
 ```maven
 <dependency>
   <groupId>io.github.pathus90</groupId>
   <artifactId>om4j</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 or, if you use `Gradle`, add the following line to your build file:
@@ -30,21 +30,38 @@ implementation 'io.github.pathus90:om4j:1.0.0'
 ### Get your Access token
 Orange Money Web Payment API requires an Access token, based on your developer credentials (client id and client secret).
 
-
+###  Using Authorization header
 ``` java
-MobileMoneyTransaction orangeMoneyService = new OrangeMoneyService("dev");
-TokenResponse accessTokenResponse = orangeMoneyService.getAccessToken("CONSUMER_KEY");
-```
-
-For production your need to set your target country code in as enviroment
-Exemple : gn for Guinea
-
-``` java
-MobileMoneyTransaction orangeMoneyService = new OrangeMoneyService("gn");
-TokenResponse accessTokenResponse = orangeMoneyService.getAccessToken(CONSUMER_KEY);
+OrangeMoney orangeMoney = new OrangeMoney("dev");
+TokenResponse tokenResponse = orangeMoney.getAccessToken(CONSUMER_KEY);
 ```
 NOTE:  CONSUMER_KEY is in Authorization header
 
+###  Using Authorization client and secret id
+``` java
+OrangeMoney orangeMoney = new OrangeMoney("dev");
+TokenResponse tokenResponse = orangeMoney.getAccessToken("XXXclientId","XXXsecretId");
+```
+
+For production your need to set your target country code in as enviroment
+``` java
+OrangeMoney orangeMoney = new OrangeMoney("gn");
+TokenResponse tokenResponse = orangeMoney.getAccessToken("");
+```
+
+### Supported country actuall
+- `gn` for `Guinea`
+- `ci` from `ivory coast`
+- `cm` for `cameroon`
+``` java
+public enum Environment {
+    DEV("dev"),
+    GUINEA("gn"),
+    CAMEROON("cm"),
+    IVORY_COAST("ci");
+}
+``` 
+If your country is not listed below, and Orange Money is available in it, please consider updating this enum class by adding your country and submitting a merge request.
 ###  Response Structure
 ``` json
 {
@@ -54,11 +71,11 @@ NOTE:  CONSUMER_KEY is in Authorization header
 }
 ```
 
-NOTE: The access_token is valid for the duration, in seconds, specified by expires_in. Therefore, you do not need to request a new access token as your client application doesn't receive an error indicating that your access token expired. At the present time, access_token have a lifetime of about 60 minutes.
+NOTE: The access_token is valid for the duration, in seconds, specified by expires_in. Therefore, you do not need to requestBody a new access token as your client application doesn't receive an error indicating that your access token expired. At the present time, access_token have a lifetime of about 60 minutes.
 If your token is expired, you just have to get a new token by the same method.
 
 ## Web Payment
-This API allows you to create a payment session in the Orange Money system. A payment transaction will be created based on the information provided in your request and a `Payment Token` will be returned in the API response.
+This API allows you to create a payment session in the Orange Money system. A payment transaction will be created based on the information provided in your requestBody and a `Payment Token` will be returned in the API response.
 ``` java
 WebPaymentRequest webPaymentRequest = WebPaymentRequest.builder()
 				.currency("")
@@ -72,7 +89,7 @@ WebPaymentRequest webPaymentRequest = WebPaymentRequest.builder()
 				.amount()
 				.build();
 
-WebPaymentResponse webPaymentResponse = orangeMoneyService.initPayment(webPaymentRequest, "ACCESS_TOKEN");
+WebPaymentResponse webPaymentResponse = orangeMoney.initPayment(webPaymentRequest, "ACCESS_TOKEN");
 ```
 
 ###  Response Structure
@@ -86,7 +103,7 @@ WebPaymentResponse webPaymentResponse = orangeMoneyService.initPayment(webPaymen
 }
 ```
 #### Note
-webPayment method automatically call getToken and set it in request header.
+webPayment method automatically call getToken and set it in requestBody header.
 
 ## Transaction Status
 In addition to Transaction Notification, you can use the Transaction Status API that allows you to consult in real-time the current status of a payment. In practice, this can be useful for cases where notification are not sent (e.g. when users don’t validate their payments)
@@ -99,7 +116,7 @@ StatusRequest statusRequest = StatusRequest.builder()
 				.amount(webPaymentRequest.getAmount())
 				.build();
 
-StatusResponse statusResponse = orangeMoneyService.getTransactionStatus(statusRequest, "ACCESS_TOKEN");
+StatusResponse statusResponse = orangeMoney.getTransactionStatus(statusRequest, "ACCESS_TOKEN");
 
 ```
 ###  Response Structure
