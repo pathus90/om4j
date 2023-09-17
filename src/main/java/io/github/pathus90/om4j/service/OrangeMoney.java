@@ -18,40 +18,43 @@ import static io.github.pathus90.om4j.utils.WebHttpClient.executePostWithRequest
  */
 public class OrangeMoney implements MobileMoneyTransaction {
 
-    private static final String DEVELOPMENT_ENVIRONMENT = "dev";
-    private final String environment;
+	private static final String DEVELOPMENT_ENVIRONMENT = "dev";
+	private final String environment;
 
-    public OrangeMoney(){
-        environment = Environment.DEV.getValue();
-    }
-    public OrangeMoney(String environment) {
-        if (environment == null || environment.trim().isEmpty()) {
-            throw new MobileMoneyException("Environment must be set");
-        }
-        this.environment = selectEnvironment(environment);
-    }
+	public OrangeMoney() {
+		environment = Environment.DEV.getValue();
+	}
 
-    private String selectEnvironment(String environment) {
-        return environment.equalsIgnoreCase(DEVELOPMENT_ENVIRONMENT) ? DEVELOPMENT_ENVIRONMENT : environment;
-    }
+	public OrangeMoney(String environment) {
+		if (environment == null || environment.trim().isEmpty()) {
+			throw new MobileMoneyException("Environment must be set");
+		}
+		this.environment = selectEnvironment(environment);
+	}
 
-    @Override
-    public AccessTokenResponse getAccessToken(String basicAuthHeader) throws Exception {
-        return executePostWithFormBody(basicAuthHeader, OrangeMoneyUrlBuilder.getTokenUrl());
-    }
+	private String selectEnvironment(String environment) {
+		return environment.equalsIgnoreCase(DEVELOPMENT_ENVIRONMENT) ? DEVELOPMENT_ENVIRONMENT : environment;
+	}
 
-    @Override
-    public AccessTokenResponse getAccessToken(String clientId, String clientSecret) throws Exception {
-        return getAccessToken(BasicAuthGenerator.generateBasicAuthHeader(clientId, clientSecret));
-    }
+	@Override
+	public AccessTokenResponse getAccessToken(String basicAuthHeader) throws Exception {
+		return executePostWithFormBody(basicAuthHeader, OrangeMoneyUrlBuilder.getTokenUrl());
+	}
 
-    @Override
-    public WebPaymentResponse initPayment(WebPaymentRequest webPaymentRequest, String token) throws Exception {
-        return executePostWithRequestBody(token, OrangeMoneyUrlBuilder.getWebPaymentUrl(environment), webPaymentRequest, WebPaymentResponse.class);
-    }
+	@Override
+	public AccessTokenResponse getAccessToken(String clientId, String clientSecret) throws Exception {
+		return getAccessToken(BasicAuthGenerator.generateBasicAuthHeader(clientId, clientSecret));
+	}
 
-    @Override
-    public StatusResponse getTransactionStatus(StatusRequest statusRequest, String token) throws Exception {
-        return executePostWithRequestBody(token, OrangeMoneyUrlBuilder.getTransactionStatusUrl(environment), statusRequest, StatusResponse.class);
-    }
+	@Override
+	public WebPaymentResponse initPayment(WebPaymentRequest webPaymentRequest, String token) throws Exception {
+		return executePostWithRequestBody(token, OrangeMoneyUrlBuilder.getWebPaymentUrl(environment), webPaymentRequest,
+				WebPaymentResponse.class);
+	}
+
+	@Override
+	public StatusResponse getTransactionStatus(StatusRequest statusRequest, String token) throws Exception {
+		return executePostWithRequestBody(token, OrangeMoneyUrlBuilder.getTransactionStatusUrl(environment),
+				statusRequest, StatusResponse.class);
+	}
 }

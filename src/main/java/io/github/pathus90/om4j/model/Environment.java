@@ -6,11 +6,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum Environment {
-    DEV("dev"),
-    GUINEA("gn"),
-    CAMEROON("cm"),
-    IVORY_COAST("ci");
+	DEV("dev"), GUINEA("gn"), CAMEROON("cm"), IVORY_COAST("ci");
 
-    private final String value;
+	private final String value;
 
 }

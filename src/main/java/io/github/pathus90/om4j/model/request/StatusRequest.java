@@ -9,12 +9,12 @@ import lombok.Setter;
 @Setter
 public class StatusRequest extends RequestBase {
 
-    @JsonProperty("pay_token")
-    private String payToken;
+	@JsonProperty("pay_token")
+	private String payToken;
 
-    @Builder
-    public StatusRequest(String orderId, int amount, String payToken) {
-        super(orderId, amount);
-        this.payToken = payToken;
-    }
+	@Builder
+	public StatusRequest(String orderId, int amount, String payToken) {
+		super(orderId, amount);
+		this.payToken = payToken;
+	}
 }

@@ -8,39 +8,41 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@JsonPropertyOrder({"currency", "merchant_key", "order_id", "amount", "return_url", "cancel_url", "notif_url", "lang", "reference"})
+@JsonPropertyOrder({ "currency", "merchant_key", "order_id", "amount", "return_url", "cancel_url", "notif_url", "lang",
+		"reference" })
 public class WebPaymentRequest extends RequestBase {
 
-    @JsonProperty("currency")
-    private String currency;
+	@JsonProperty("currency")
+	private String currency;
 
-    @JsonProperty("merchant_key")
-    private String merchantKey;
+	@JsonProperty("merchant_key")
+	private String merchantKey;
 
-    @JsonProperty("return_url")
-    private String returnUrl;
+	@JsonProperty("return_url")
+	private String returnUrl;
 
-    @JsonProperty("cancel_url")
-    private String cancelUrl;
+	@JsonProperty("cancel_url")
+	private String cancelUrl;
 
-    @JsonProperty("notif_url")
-    private String notifUrl;
+	@JsonProperty("notif_url")
+	private String notifUrl;
 
-    @JsonProperty("lang")
-    private String lang;
+	@JsonProperty("lang")
+	private String lang;
 
-    @JsonProperty("reference")
-    private String reference;
+	@JsonProperty("reference")
+	private String reference;
 
-    @Builder
-    public WebPaymentRequest(String orderId, int amount, String currency, String merchantKey, String returnUrl, String cancelUrl, String notifUrl, String lang, String reference) {
-        super(orderId, amount);
-        this.currency = currency;
-        this.merchantKey = merchantKey;
-        this.returnUrl = returnUrl;
-        this.cancelUrl = cancelUrl;
-        this.notifUrl = notifUrl;
-        this.lang = lang;
-        this.reference = reference;
-    }
+	@Builder
+	public WebPaymentRequest(String orderId, int amount, String currency, String merchantKey, String returnUrl,
+			String cancelUrl, String notifUrl, String lang, String reference) {
+		super(orderId, amount);
+		this.currency = currency;
+		this.merchantKey = merchantKey;
+		this.returnUrl = returnUrl;
+		this.cancelUrl = cancelUrl;
+		this.notifUrl = notifUrl;
+		this.lang = lang;
+		this.reference = reference;
+	}
 }

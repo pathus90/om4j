@@ -13,9 +13,9 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode
 public class RequestBase {
-    @JsonProperty("order_id")
-    private String orderId;
+	@JsonProperty("order_id")
+	private String orderId;
 
-    @JsonProperty("amount")
-    private int amount;
+	@JsonProperty("amount")
+	private int amount;
 }

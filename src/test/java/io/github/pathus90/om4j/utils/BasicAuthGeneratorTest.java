@@ -6,18 +6,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BasicAuthGeneratorTest {
 
-    @Test
-    public void testGenerateBasicAuthHeader() {
-        // Given
-        String clientId = "testClient";
-        String clientSecret = "testSecret";
+	@Test
+	public void testGenerateBasicAuthHeader() {
+		// Given
+		String clientId = "testClient";
+		String clientSecret = "testSecret";
 
-        // When
-        String basicAuthHeader = BasicAuthGenerator.generateBasicAuthHeader(clientId, clientSecret);
+		// When
+		String basicAuthHeader = BasicAuthGenerator.generateBasicAuthHeader(clientId, clientSecret);
 
-        // Then
-        String expectedHeader = "dGVzdENsaWVudDp0ZXN0U2VjcmV0";
-        assertEquals(expectedHeader, basicAuthHeader);
-    }
+		// Then
+		String expectedHeader = "dGVzdENsaWVudDp0ZXN0U2VjcmV0";
+		assertEquals(expectedHeader, basicAuthHeader);
+	}
 }
-
