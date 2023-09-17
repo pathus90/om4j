@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public final class JSONSerializerTest {
+class JSONSerializerTest {
 
 	@Test
-	public void testSerializeToJsonString() throws JsonProcessingException {
+	 void testSerializeToJsonString() throws JsonProcessingException {
 		// Create an object to serialize
 		RequestBase sampleObject = new RequestBase("John", 30);
 
@@ -24,7 +24,7 @@ public final class JSONSerializerTest {
 	}
 
 	@Test
-	public void testDeserializeFromJsonString() throws JsonProcessingException {
+	void testDeserializeFromJsonString() throws JsonProcessingException {
 		// JSON string to deserialize
 		String jsonString = "{\"order_id\":\"Alice\",\"amount\":25}";
 

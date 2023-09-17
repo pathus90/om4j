@@ -4,16 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OrangeMoneyUrlBuilderTest {
+class OrangeMoneyUrlBuilderTest {
 
 	@Test
-	public void testGetTokenUrl() {
+	void testGetTokenUrl() {
 		String tokenUrl = OrangeMoneyUrlBuilder.getTokenUrl();
 		assertEquals("https://api.orange.com/oauth/v3/token", tokenUrl);
 	}
 
 	@Test
-	public void testGetWebPaymentUrl() {
+	 void testGetWebPaymentUrl() {
 		String devWebPaymentUrl = OrangeMoneyUrlBuilder.getWebPaymentUrl("dev");
 		String prodWebPaymentUrl = OrangeMoneyUrlBuilder.getWebPaymentUrl("prod");
 
@@ -22,7 +22,7 @@ public class OrangeMoneyUrlBuilderTest {
 	}
 
 	@Test
-	public void testGetTransactionStatusUrl() {
+	 void testGetTransactionStatusUrl() {
 		String testTransactionStatusUrl = OrangeMoneyUrlBuilder.getTransactionStatusUrl("test");
 		assertEquals("https://api.orange.com/orange-money-webpay/test/v1/transactionstatus", testTransactionStatusUrl);
 	}

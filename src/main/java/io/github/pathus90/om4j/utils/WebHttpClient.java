@@ -69,10 +69,10 @@ public final class WebHttpClient {
 	 * @param endpoint
 	 *            URL endpoint
 	 * @return An object of the specified type
-	 * @throws Exception
+	 * @throws IOException
 	 *             If there's an error in parsing or the request fails
 	 */
-	public static AccessTokenResponse executePostWithFormBody(String token, String endpoint) throws Exception {
+	public static AccessTokenResponse executePostWithFormBody(String token, String endpoint) throws IOException {
 		Headers headers = createAuthorizationHeaders(token, BASIC_AUTH_PREFIX);
 		FormBody body = createFormBody();
 		return executePostRequest(endpoint, headers, body, AccessTokenResponse.class);
@@ -92,11 +92,11 @@ public final class WebHttpClient {
 	 * @param <T>
 	 *            Specified type of object
 	 * @return An object of the specified type
-	 * @throws Exception
+	 * @throws IOException
 	 *             If there's an error in parsing or the request fails
 	 */
 	public static <T> T executePostWithRequestBody(String token, String endpoint, RequestBase requestBody,
-			Class<T> clazz) throws Exception {
+			Class<T> clazz) throws IOException {
 		Headers headers = createAuthorizationHeaders(token, BEARER_AUTH_PREFIX);
 		okhttp3.RequestBody body = createJsonRequestBody(requestBody);
 		return executePostRequest(endpoint, headers, body, clazz);
@@ -116,11 +116,10 @@ public final class WebHttpClient {
 	 * @param <T>
 	 *            Specified type of object
 	 * @return An object of the specified type
-	 * @throws Exception
+	 * @throws IOException
 	 *             If there's an error in parsing or the request fails
 	 */
-	private static <T> T executePostRequest(String endpoint, Headers headers, okhttp3.RequestBody body, Class<T> clazz)
-			throws Exception {
+	private static <T> T executePostRequest(String endpoint, Headers headers, okhttp3.RequestBody body, Class<T> clazz) throws IOException {
 		Response response = sendPostRequest(endpoint, headers, body);
 		handleResponseErrors(response);
 		return JSONSerializer.deserializeFromJsonString(Objects.requireNonNull(response.body()).string(), clazz);

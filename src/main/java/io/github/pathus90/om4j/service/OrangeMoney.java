@@ -10,6 +10,8 @@ import io.github.pathus90.om4j.model.response.WebPaymentResponse;
 import io.github.pathus90.om4j.utils.BasicAuthGenerator;
 import io.github.pathus90.om4j.utils.OrangeMoneyUrlBuilder;
 
+import java.io.IOException;
+
 import static io.github.pathus90.om4j.utils.WebHttpClient.executePostWithFormBody;
 import static io.github.pathus90.om4j.utils.WebHttpClient.executePostWithRequestBody;
 
@@ -37,23 +39,23 @@ public class OrangeMoney implements MobileMoneyTransaction {
 	}
 
 	@Override
-	public AccessTokenResponse getAccessToken(String basicAuthHeader) throws Exception {
+	public AccessTokenResponse getAccessToken(String basicAuthHeader) throws IOException {
 		return executePostWithFormBody(basicAuthHeader, OrangeMoneyUrlBuilder.getTokenUrl());
 	}
 
 	@Override
-	public AccessTokenResponse getAccessToken(String clientId, String clientSecret) throws Exception {
+	public AccessTokenResponse getAccessToken(String clientId, String clientSecret) throws IOException {
 		return getAccessToken(BasicAuthGenerator.generateBasicAuthHeader(clientId, clientSecret));
 	}
 
 	@Override
-	public WebPaymentResponse initPayment(WebPaymentRequest webPaymentRequest, String token) throws Exception {
+	public WebPaymentResponse initPayment(WebPaymentRequest webPaymentRequest, String token) throws IOException {
 		return executePostWithRequestBody(token, OrangeMoneyUrlBuilder.getWebPaymentUrl(environment), webPaymentRequest,
 				WebPaymentResponse.class);
 	}
 
 	@Override
-	public StatusResponse getTransactionStatus(StatusRequest statusRequest, String token) throws Exception {
+	public StatusResponse getTransactionStatus(StatusRequest statusRequest, String token) throws IOException {
 		return executePostWithRequestBody(token, OrangeMoneyUrlBuilder.getTransactionStatusUrl(environment),
 				statusRequest, StatusResponse.class);
 	}
