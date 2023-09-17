@@ -25,6 +25,7 @@
 		<gpg.keyname>0x321E4625</gpg.keyname>
 		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
         <spotless.version>2.20.0</spotless.version>
+		<mockito-core.version>5.2.0</mockito-core.version>
 	</properties>
 
 	<licenses>
@@ -97,7 +98,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.2.0</version>
+            <version>${mockito-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
