@@ -1,4 +1,4 @@
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.pathus90/om4j.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.pathus90%22%20AND%20a:%22om4j%22)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.pathus90/om4j.svg?label=Maven%20Central)](https://mvnrepository.com/artifact/io.github.pathus90/om4j)
 
 # om4j
 
@@ -139,6 +139,14 @@ The status could take one of the following values: INITIATED; PENDING; EXPIRED; 
 
 If the transaction is not tried (the customer doesn’t do anything or returns on Merchant site), the status stays in INITIATED state. By default, the token’s validity is 10 minutes. The passage from PENDING state to SUCCESS or FAILED state is rapid.
 
+### List of common error codes
+| HTTP Code | API Code | Message                            | Description                                 | Comments                                                  |
+|-----------|----------|------------------------------------|---------------------------------------------|-----------------------------------------------------------|
+| 403       | 50       | Forbidden access to the API        | Access denied by ACL                         | 'Unauthorized Access Layer' or 'Unauthorized applicationId' or ‘Unauthorized country’ |
+| 403       | 1201     | Forbidden access to the API        | Forbidden transaction                        | You are not allowed to do this action                     |
+| 403       | 1202     | Forbidden access to the API        | Invalid merchant key                        | Your merchant key is wrong. You need to check it          |
+| 403       | 1203     | Forbidden access to the API        | Unauthorized currency for this country     | Check the currency you put in your request                |
+| 403       | 1204     | Forbidden access to the API        | Order Already exists                       | The order_id must be unique in the system. Only one Token per order_id |
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
